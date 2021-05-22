@@ -1,2 +1,2 @@
 # RSkills
-# RSkills
+Solution to RSkills test
