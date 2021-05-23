@@ -106,7 +106,7 @@ US_TR_ret <- na.omit(US_TR_lag[, .(DATE, INDEX=INDEX/LAG-1)]) # non-annualised
 
 # daily returns
 data_count <- nrow(US_TR_index)
-US_TR_ret_daily <- US_TR_index[,LAG:=shift(INDEX, 1, type = "lag")][,RET:=INDEX/LAG-1]
+US_TR_ret_daily <- na.omit(US_TR_index[,LAG:=shift(INDEX, 1, type = "lag")][,RET:=INDEX/LAG-1])
 
 # calculate output values for tables
 table_start_date <- US_TR_index[,min(DATE)]
