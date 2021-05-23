@@ -2,3 +2,4 @@
 
 data/*.fst
 ext_data/*.fst
+ext_data/*.csv

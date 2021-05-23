@@ -3,10 +3,23 @@ Title: Solution to RSkills test
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kieran",
-           family = "Walsh")
+           family = "Walsh", 
+           email = "test@test.com",
+           role = c("aut", "cre"))
 Description: Solution to RSkills test
 License: use_mit_license()
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends:
+  data.table,
+  ggplot2,
+  fst,
+  devtools
+Imports:
+  data.table,
+  ggplot2,
+  fst,
+  devtools
+
