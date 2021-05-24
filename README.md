@@ -36,10 +36,13 @@ I've saved a graph of the standard deviations in the outputs/ folder under Quest
 ### Question 4
 To hedge out of downward price movement we can:
 1. Short the underlying stock
-1. Purchase ATM put options
-1. Fully delta hedge at each point in time using MSFT single stock futures
+2. Short stocks with similar characteristics
+3. Purchase ATM put options
+4. Fully delta hedge at each point in time using MSFT single stock futures
     1. (SSFs aren't traded in the US - so this isn't a realistic option)
 
 Shorting the stock will require a large amount of initial and variation margin, whereas buying puts just has the initial premium outlay
 
-Within the script, I've shown that the margin requirement to short a stock is greater than the option price for a given set of reasonable assumptions
+I additionally wanted to investigate shorting stocks with similar characteristics to MSFT in order to hedge them. I hadn't carried out analysis like this before, so this methodology was new to me. I looked at a univariate regression of MSFT against other stocks in the software sector. Disregarding the regressions that weren't significant, I took the lowest slope value against Microsoft, reasoning that this would require the smallest hedge amount. I feel this methodology may have quite a large amount of basis risk, and the put option may be a more robust approach over the required time period.
+
+Within the script, I've shown that the margin requirement to short a stock is greater than the option price for a given set of reasonable assumptions, and that shorting a the similar stock is less capital intensive again.
