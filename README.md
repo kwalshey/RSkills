@@ -4,7 +4,9 @@ Solution to RSkills test
 ## Directory Structure
 
 * R - Contains .R scripts providing solutions to the test
-* ext_data - Contains external data sources (these are not uploaded to the repo - in reality large files like this would be saved at another remote location)
+* ext_data - Contains external data sources 
+    * These are not uploaded to the repo - in reality large files like this would be saved at another remote location
+    * Please add daily_US_prices.fst and monthly_world_val.fst to this folder in order to run the R code
 * outputs - Contains output from scripts as specifically requested in the test
 
 ## Overview
