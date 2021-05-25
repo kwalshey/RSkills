@@ -71,12 +71,13 @@ daily_US_prices <- daily_prices[COUNTRY==country]
 # our data series' for this
 
 # choose our index divisor
-divisor <- 35000
+divisor <- 3500
 
-# using an order and index method here - faster than using head()
+# using an order and index method here (faster than using head), find top 500 at each time
 daily_US_prices_500 <- daily_US_prices[order(DATE, -MARKET_CAP)][, .SD[1:500], by=DATE]
-US_TR_index <- daily_US_prices_500[, PRICE_CAP:=PRICE*MARKET_CAP
-                                   ][,.(INDEX=sum(PRICE_CAP)/divisor), by=DATE]
+
+# calculate index values
+US_TR_index <- daily_US_prices_500[,.(INDEX=sum(MARKET_CAP)/divisor), by=DATE]
 
 ggplot(data=US_TR_index, aes(x=DATE, y=INDEX)) + geom_line()
 
@@ -87,15 +88,37 @@ ggplot(data=US_TR_index, aes(x=DATE, y=INDEX)) + geom_line()
 
 # determine start date for rolling return calcs
 start_date <- US_TR_index[,min(DATE)]
+end_date <- US_TR_index[,max(DATE)]
 start_roll <- start_date %m+% years(3)
+
+# read in S&P500 data
+SP500 <- fread("ext_data/SP500.csv")
+setnames(SP500, "Close", "SP500")
+
+# change date format
+SP500[,DATE := as.Date(Date, "%d/%m/%Y")][,Date:=NULL]
+
+# join data
+US_TR_index_SP <- SP500[US_TR_index, on=.(DATE=DATE)
+                              ][DATE>=start_date & DATE<=end_date]
 
 # calculate returns using 3y lagged data as intermediate step
 # using lagged data is quicker than a roll function here
-horizon <- US_TR_index[DATE==start_roll, which=TRUE]
-US_TR_lag <- US_TR_index[,LAG:=shift(INDEX, horizon-1, type = "lag")]
-US_TR_ret <- na.omit(US_TR_lag[, .(DATE, INDEX=INDEX/LAG-1)]) # non-annualised
+horizon <- US_TR_index_SP[DATE==start_roll, which=TRUE]
+US_TR_index_SP[,INDEXLAG:=shift(INDEX, horizon-1, type = "lag")]
+US_TR_index_SP[,SP500LAG:=shift(SP500, horizon-1, type = "lag")]
 
-ggplot(data=US_TR_ret, aes(x=DATE, y=INDEX)) + geom_line()
+US_TR_ret <- na.omit(US_TR_index_SP[, .(DATE, INDEX=INDEX/INDEXLAG-1,
+                                        SP500=SP500/SP500LAG-1)])
+
+# reshape data for ease of graphical combination
+US_TR_ret_melt <- melt(US_TR_ret, id.vars=c("DATE"),
+                         measure.vars=c("INDEX", "SP500"),
+                         value.name="INDEX",
+                         variable.name="DataSeries")
+
+
+ggplot(data=US_TR_ret_melt, aes(x=DATE, y=INDEX, color=DataSeries)) + geom_line()
 
 ################################### c. ##########################################
 # Present a table with the following summary statistics of your index           #
