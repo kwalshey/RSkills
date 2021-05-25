@@ -5,8 +5,9 @@ Solution to RSkills test
 
 * R - Contains .R scripts providing solutions to the test
 * ext_data - Contains external data sources 
-    * These are not uploaded to the repo - in reality large files like this would be saved at another remote location
+    * Large files are not uploaded to the repo - in reality files like this would be saved at another remote location
     * Please add daily_US_prices.fst and monthly_world_val.fst to this folder in order to run the R code
+    * SP500.csv is included here - no need to add this
 * outputs - Contains output from scripts as specifically requested in the test
 
 ## Overview
