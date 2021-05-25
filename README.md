@@ -6,8 +6,8 @@ Solution to RSkills test
 * R - Contains .R scripts providing solutions to the test
 * ext_data - Contains external data sources 
     * Large files are not uploaded to the repo - in reality files like this would be saved at another remote location
-    * Please add daily_US_prices.fst and monthly_world_val.fst to this folder in order to run the R code
-    * SP500.csv is included here - no need to add this
+    * Please add `daily_US_prices.fst` and `monthly_world_val.fst` to this folder in order to run the R code
+    * `SP500.csv` is included here - no need to add this
 * outputs - Contains output from scripts as specifically requested in the test
 
 ## Overview
@@ -19,13 +19,13 @@ Regardless of it's usage, all code benefits from version control, and so I've cr
 
 ## Question Analysis
 ### Question 1
-I've saved a ggplot graph of various EV/SALES metrics in the outputs/ folder under Question1.png
+I've saved a ggplot graph of various EV/SALES metrics in the `outputs/` folder under `Question1.png`
 
 ### Question 2 (a)
-I've saved a graph of the constructed total return index in the outputs/ folder under Question2a.png
+I've saved a graph of the constructed total return index in the `outputs/` folder under `Question2a.png`
 
 ### Question 2 (b)
-I've saved a graph of the 2 constructed returns series' in the outputs/ folder under Question2b.png
+I've saved a graph of the 2 constructed returns series' in the `outputs/` folder under `Question2b.png`
 
 ### Question 2 (c)
 Here is the requested table filled out:
@@ -34,7 +34,7 @@ Start Date | Start Index Value | End Date | End Index Value | Cumulative Total R
 1994-12-30 | 459.27 | 2018-07-19 | 3183.02 | 593.06% | 8.56% | 17.24%
 
 ### Question 3
-I've saved a graph of the standard deviations in the outputs/ folder under Question3.png
+I've saved a graph of the standard deviations in the `outputs/` folder under `Question3.png`
 
 ### Question 4
 To hedge out of downward price movement we can:
