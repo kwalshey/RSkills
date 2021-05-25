@@ -30,7 +30,7 @@ I've saved a graph of the 2 constructed returns series' in the outputs/ folder u
 Here is the requested table filled out:
 Start Date | Start Index Value | End Date | End Index Value | Cumulative Total Return | Cumulative Total Return p.a. | Volatility of Daily Returns (annualised)
 ----------------- | ----------------- | ----------------- | ----------------- | ----------------- | ----------------- | -----------------
-1994-12-30 | 1057.89 | 2018-07-19 | 7331.86 | 593.06% | 8.56% | 15.55%
+1994-12-30 | 459.27 | 2018-07-19 | 3183.02 | 593.06% | 8.56% | 17.24%
 
 ### Question 3
 I've saved a graph of the standard deviations in the outputs/ folder under Question3.png
