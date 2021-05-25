@@ -70,8 +70,8 @@ daily_US_prices <- daily_prices[COUNTRY==country]
 # as data is split, spinoff and dividend adjusted, we don't need to manually adjust
 # our data series' for this
 
-# choose our index divisor
-divisor <- 3500
+# choose our index divisor (selected to roughly match SP500)
+divisor <- 8062
 
 # using an order and index method here (faster than using head), find top 500 at each time
 daily_US_prices_500 <- daily_US_prices[order(DATE, -MARKET_CAP)][, .SD[1:500], by=DATE]
